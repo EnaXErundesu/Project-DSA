@@ -200,7 +200,46 @@ public class PathFinding {
         }
     }
 
-    class Algorithm {
-        // TODO: Add algorithm implementations
+    class Algorithm { // ALGORITHM CLASS
+
+    public void Dijkstra() {
+        // TODO: ADD DIJKSTRA ALGORITHM
+    }
+
+    public void AStar() {
+        // TODO: ADD A-STAR ALGORITHM
+    }
+
+    public void BreadthFirst() {
+        // TODO: ADD BFS ALGORITHM
+    }
+
+    public void DepthFirst() {
+        LinkedStack<Cell> stack = new LinkedStack<>();
+        stack.push(map[startX][startY]);
+        while (solving) {
+            if (stack.size() <= 0) {
+                solving = false;
+                break;
+            }
+            int hops = stack.peek().getHops() + 1;
+            SinglyLinkedList<Cell> explored = exploreNeighbors(stack.peek(), hops);
+            if (explored.size() > 0) {
+                stack.pop();
+                while (!explored.isEmpty()) {
+                    stack.push(explored.getHead().getElement());
+                    explored.removeFirst();
+                }
+            } else {
+                stack.pop();
+            }
+            Update();
+            delay();
+        }
+    }
+
+    public void BellmanFord() {
+        // TODO: ADD BELLMAN-FORD ALGORITHM
     }
 }
+
